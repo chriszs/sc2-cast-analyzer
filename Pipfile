@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pafy = "*"
+youtube-dl = "*"
+opencv-python = "*"
+pillow = "*"
+pytesseract = "*"
+imutils = "*"
+numpy = "*"
+
+[requires]
+python_version = "3.7"
