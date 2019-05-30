@@ -12,7 +12,6 @@ opencv-python = "*"
 pillow = "*"
 pytesseract = "*"
 imutils = "*"
-numpy = "*"
 
 [requires]
 python_version = "3.7"
