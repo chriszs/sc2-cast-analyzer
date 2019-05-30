@@ -2,5 +2,6 @@
 
 for file in $(find $1 -name "*.mp4");
 do
-	ffmpeg -i $file -acodec copy -f segment -segment_time 10 -vcodec copy -reset_timestamps 1 -map 0 $2%d.mp4
+	mkdir -p $2$(basename $file .mp4)/
+	ffmpeg -i $file -acodec copy -f segment -segment_time 10 -vcodec copy -reset_timestamps 1 -map 0 $2$(basename $file .mp4)/%d.mp4
 done

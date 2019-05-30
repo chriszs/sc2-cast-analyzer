@@ -32,7 +32,7 @@ def read_box(frame,w,h,y,x,ocr,name):
 i = 0
 
 #start the video
-cap = cv2.VideoCapture('data/sample.mp4') # play.url)
+cap = cv2.VideoCapture('data/download/sample.mp4') # play.url)
 while (True):
     ret,frame = cap.read()
 
