@@ -1,7 +1,6 @@
 import cv2
 import sys
 import numpy as np
-import pytesseract
 
 # based on
 # https://cvisiondemy.com/extract-roi-from-image-with-python-and-opencv/
@@ -36,53 +35,29 @@ def read_box(frame,width,height,boxX,boxY,name):
 
         roi = ocrable[y:y + h, x:x + w]
 
-        if h <= height * 0.2:
+        if h <= height * 0.3:
             continue
-
-        config = ("-l eng --oem 1 --psm 13")
-        text.append(
-            #[
-            # boxX+x,
-            # boxY+y,
-            # w,
-            # h,
-            pytesseract.image_to_string(roi, config=config)
-        #]
-        )
 
         # cv2.rectangle(ocrable, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
     # cv2.imshow(name, ocrable)
     # cv2.waitKey(0)
 
-    return text, box
+    return box
 
-i = 0
+frame = cv2.imread(sys.argv[1])
 
-#start the video
-cap = cv2.VideoCapture(sys.argv[1])
-while (True):
-    ret,frame = cap.read()
+(origH, origW) = frame.shape[:2]
 
-    i += 1
+w = 600
+x = 190
+h = 72
 
-    if i % 60 != 0:
-        continue
+name = 'stats'
 
-    if frame is None:
-        break
+box1 = read_box(frame, w, h, x, origH-h, name)
 
-    (origH, origW) = frame.shape[:2]
+print(sys.argv[2] + name + '.png')
+# cv2.imwrite(box1, sys.argv[2] + name + '.png')
 
-    w = 600
-    x = 190
-    h = 72
-
-    text1, box1= read_box(frame,w,h,x,origH-h,'stats')
-    print(text1)
-
-    if cv2.waitKey(20) & 0xFF == ord('q'):
-        break    
-
-cap.release()
 cv2.destroyAllWindows()
