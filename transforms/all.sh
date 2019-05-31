@@ -1,6 +1,6 @@
 #!/bin/bash
 
-transforms=( 'download' 'split' ) # 'check' 'download' 'split' 'extract' 'ocr'
+transforms=( 'download' 'split' 'extract' ) # 'check' 'download' 'split' 'extract' 'ocr'
 
 prior=''
 
