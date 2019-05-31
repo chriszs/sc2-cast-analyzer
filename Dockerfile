@@ -24,4 +24,4 @@ RUN set -ex && pipenv install
 
 COPY . /app
 
-CMD pipenv run python main.py
+CMD ./transforms/all.sh
